@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import '../models/recipe_model.dart';
 import 'package:get/get.dart';
+
 class SpoonacularApiService {
   final Dio _dio = Dio();
   final String _apiKey = '1f9d617ba13041859ea773423b0e6291';
@@ -18,21 +19,22 @@ class SpoonacularApiService {
       );
 
       if (response.statusCode == 200) {
-        // Check if the response status code is successful
-
+        // Successful response, parse and return recipes
         List<RecipeModel> recipes = (response.data['results'] as List)
             .map((json) => RecipeModel.fromJson(json))
             .toList();
 
         return recipes;
+      } else if (response.statusCode == 402) {
+        // Handle Payment Required status
+        Get.snackbar(
+          "Today Limit",
+          '${response.statusMessage}',
+        );
+        // You might want to return an empty list or handle this case accordingly
+        return [];
       } else {
-        if(response.statusCode == 402){
-          Get.snackbar(
-             "Today Limit",
-             '${response.statusMessage}',
-          );
-        }
-        // Handle non-200 status codes
+        // Handle other non-successful status codes
         throw Exception('Failed to fetch recipes. Status code: ${response.statusCode}');
       }
     } catch (e) {
