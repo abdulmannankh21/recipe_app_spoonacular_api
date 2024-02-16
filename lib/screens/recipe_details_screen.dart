@@ -10,7 +10,6 @@ class RecipeDetailsScreen extends StatelessWidget {
     ModalRoute.of(context)!.settings.arguments as RecipeModel?;
 
     if (recipe == null) {
-      // Handle the case where recipe is null, you might want to display an error message or navigate back.
       return Scaffold(
         body: Center(
           child: Text('Recipe details not available.'),

@@ -15,8 +15,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: '/',
       routes: {
-    '/': (context) => SearchScreen(),
-    '/recipe_details': (context) => RecipeDetailsScreen(),
-    },    );
+        '/': (context) => SearchScreen(),
+        '/recipe_details': (context) => RecipeDetailsScreen(),
+      },
+    );
   }
 }

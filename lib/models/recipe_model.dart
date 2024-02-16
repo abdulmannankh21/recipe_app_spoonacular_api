@@ -13,7 +13,6 @@ class RecipeModel {
     required this.nutrition,
   });
 
-// Factory method to create a RecipeModel instance from JSON data
   factory RecipeModel.fromJson(Map<String, dynamic> json) {
     return RecipeModel(
       id: json['id'],
@@ -24,7 +23,6 @@ class RecipeModel {
     );
   }
 
-// Convert RecipeModel instance to JSON data
   Map<String, dynamic> toJson() {
     return {
       'id': id,

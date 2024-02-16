@@ -14,7 +14,6 @@ class RecipeCard extends StatelessWidget {
     return Card(
       child: ListTile(
         title: Text(recipe.title),
-        // subtitle: Text('Ingredients: ${recipe.ingredients.length}'),
         onTap: () =>
             Navigator.pushNamed(context, '/recipe_details', arguments: recipe),
         trailing: Obx(() {
